@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './RSVPForm.css'; // Ensure to import your CSS
+import './RSVPForm.css'; // Your CSS
 
 function RSVPForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', attending: false });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new URLSearchParams();
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('phone', form.phone);
+    formData.append('attending', form.attending ? 'Yes' : 'No');
+
     try {
-      await axios.post('https://script.google.com/macros/s/AKfycbxo0LFFega44HN6c845o_ikINZjFTk3RfjEwHZkh8Oz4o3vKfoxRkmkZO4vzwFWPAO6/exec', form);
+      await axios.post(
+        'https://script.google.com/macros/s/AKfycbzVW2qxt57_q2IGbahFeg7beuBGnoOih14_lRHN7LN-zEnpf31dBoOSLya8OFB1jBX0/exec',
+        formData
+      );
       alert('Submitted Successfully!');
-      setForm({ name: '', email: '', phone: '', attending: false }); // reset form
+      setForm({ name: '', email: '', phone: '', attending: false });
     } catch (err) {
+      console.error(err);
       alert('Failed to submit');
     }
   };
