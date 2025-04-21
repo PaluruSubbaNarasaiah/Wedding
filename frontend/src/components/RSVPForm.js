@@ -7,7 +7,7 @@ function RSVPForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/guests/rsvp', form);
+      await axios.post('https://script.google.com/macros/s/AKfycbxo0LFFega44HN6c845o_ikINZjFTk3RfjEwHZkh8Oz4o3vKfoxRkmkZO4vzwFWPAO6/exec', form);
       alert('Submitted Successfully!');
       setForm({ name: '', email: '', phone: '', attending: false }); // reset form
     } catch (err) {
