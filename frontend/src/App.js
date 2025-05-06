@@ -46,7 +46,7 @@ function App() {
       <div ref={contentRef} style={{ backgroundColor: 'white', padding: '20px' }}>
         <h1>🎉 Paluru's Wedding Invitation 🎉</h1>
         <video width="90%" controls autoPlay loop>
-          <source src="/naniwedding video.mp4" type="video/mp4" />
+          <source src="/naniwedding video1.mp4" type="video/mp4" />
         </video>
         <RSVPForm />
         <MapComponent />
